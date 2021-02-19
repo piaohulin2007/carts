@@ -1,10 +1,12 @@
 pipeline {
+
   agent {
     docker {
       image 'schoolofdevops/carts-maven'
     }
 
   }
+
   stages {
     stage('build') {
       steps {
@@ -32,10 +34,13 @@ pipeline {
   tools {
     maven 'Maven 3.6.3'
   }
+
   post {
     always {
       echo 'this pipeline has completed...'
     }
 
   }
+
 }
+
