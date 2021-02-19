@@ -1,7 +1,12 @@
 pipeline {
-  
-  agent any
-  
+
+  agent {
+    docker {
+      image 'schoolofdevops/carts-maven'
+    }
+
+  }
+
   stages {
     stage('build') {
       steps {
@@ -24,16 +29,18 @@ pipeline {
         archiveArtifacts '**/target/*.jar'
       }
     }
-   }
-  
+
+  }
   tools {
     maven 'Maven 3.6.3'
   }
-  
+
   post {
     always {
       echo 'this pipeline has completed...'
     }
 
   }
+
 }
+
